@@ -1,0 +1,56 @@
+.quest {
+  background-color: #F5F9FD;
+  //background-color: #FCFAF5;
+}
+
+.review_header {
+  position: relative;
+  width: 500px;
+}
+
+.review_header_bar {
+  position: absolute;
+  height: 2px;
+  width: 33.3%;
+  bottom: -1px;
+  background-color: black;
+  left: 0%;
+}
+
+.review_content_button {
+  border: none;
+  text-align: center;
+  padding: 10px 0;
+  
+  &:focus {
+    outline: 0;
+  }
+}
+
+.comment_container_container {
+  width: 500px;
+}
+
+.comment_container {
+  position: relative;
+  width: 500px;
+  left: 500px;
+  
+  display: -webkit-box;
+  
+  transition: transform(0.35s);
+  //transform: translate(-100%, 0px);
+}
+
+.comment {
+  
+}
+
+
+.comment2 {
+  //visibility: hidden;
+}
+
+.comment3 {
+  //visibility: hidden;
+}

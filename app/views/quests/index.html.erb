@@ -1,0 +1,5 @@
+<% @quests.each do |quest| %>
+  <div>
+    <%= link_to "Quest#{quest.develop_id} : #{quest.title}", quest_path(quest.id) %>
+  </div>
+<% end %>

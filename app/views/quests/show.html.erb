@@ -1,0 +1,44 @@
+<div class="quest">
+  <div class="container py-5">
+    <p>
+      <%= "Quest#{@quest.develop_id} : #{@quest.title}" %>
+      <span class="p-3"><%= link_to "編集する", edit_quest_path(@quest.id) %></span>
+    </p>
+    <p><%= "担当者 : #{@quest.responsible}" %></p>
+    <p class="pt-4">ゲーム全体のコンセプト<p>
+    <p>・ルート選びの自由さ<br>オープンワールドを舞台に、プレイヤーが目的地に到達するために、自由な攻略ルートを選択することが出来る</p>
+    <p>・大自然を開拓<br>資材を集めて道具を作成、そして大自然を開拓し、移動をどんどん効率化することが出来る</p>
+    <p>・オンラインでの助け合い<br>他のプレイヤーに武器や資材を提供し、ゲームの攻略を助け合うことが出来る</p>
+    <p class="pt-4">このクエストのコンセプト</p>
+    <p><%= simple_format(@quest.content) %></p>
+  </div>
+</div>
+<div>
+  <nav class="navbar border border-light d-flex justify-content-center shadow-sm rounded-top py-0">
+    <div class="review_header row">
+      <div class="review_header_bar"></div>
+      <button class="col review_content_button">良かった点</button>
+      <button class="col review_content_button">改善点</button>
+      <button class="col review_content_button">質問・その他</button>
+    </div>
+  </nav>
+  <div class="d-flex justify-content-center">
+    <div class="comment_container_container d-flex justify-content-center text-center overflow-hidden">
+      <div class="d-flex justify-content-center comment_container">
+        <div class="w-100 flex-shrink-0 comment comment1 overflow-auto">
+          hoge
+        </div>
+        <div class="w-100 flex-shrink-0 comment comment2 overflow-auto">
+          fuga
+        </div>
+        <div class="w-100 flex-shrink-0 comment comment3 overflow-auto">
+          pote
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<p>footer</p>
+<p>footer</p>
+<p>footer</p>
+<p>footer</p>

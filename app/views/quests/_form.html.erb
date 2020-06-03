@@ -1,0 +1,19 @@
+<%= form_with model: quest do |f| %>
+  <div class="form-group">
+    <%= f.label "クエストID" %><br>
+    <%= f.text_field :develop_id, placeholder: "開発ID" %>
+  </div>
+  <div class="form-group">
+    <%= f.label "タイトル" %><br>
+    <%= f.text_field :title, size: "50" %>
+  </div>
+  <div class="form-group">
+    <%= f.label "コンセプト" %><br>
+    <%= f.text_area :content, cols: "50", rows: "5", placeholder: "このクエストのコンセプト" %>
+  </div>
+  <div class="form-group">
+    <%= f.label "担当者" %><br>
+    <%= f.text_field :responsible %>
+  </div>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>
