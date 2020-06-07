@@ -10,6 +10,9 @@ class QuestsController < ApplicationController
   end
   
   def show
+    @positive_comments = Comment.where(quest_id: @quest.id, opinion_type: 'positive', parent_id: nil)
+    @negative_comments = Comment.where(quest_id: @quest.id, opinion_type: 'negative', parent_id: nil)
+    @question_comments = Comment.where(quest_id: @quest.id, opinion_type: 'question', parent_id: nil)
   end
   
   def edit

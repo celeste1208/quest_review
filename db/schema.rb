@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_112537) do
+ActiveRecord::Schema.define(version: 2020_06_03_143049) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "quest_id"
     t.text "content", null: false
-    t.string "type", null: false
+    t.string "opinion_type", null: false
     t.bigint "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["opinion_type"], name: "index_comments_on_opinion_type"
     t.index ["parent_id"], name: "index_comments_on_parent_id"
     t.index ["quest_id"], name: "index_comments_on_quest_id"
-    t.index ["type"], name: "index_comments_on_type"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 

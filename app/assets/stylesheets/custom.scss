@@ -42,15 +42,20 @@
   //transform: translate(-100%, 0px);
 }
 
-.comment {
-  
+.sticky_test {
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 20px;
 }
 
-
-.comment2 {
-  //visibility: hidden;
+.icon {
+  width: 20px;
+  height: 20px;
+  font-size: 13px;
+  border-radius: 50%;
+  background-color: #2E88FB;
 }
 
-.comment3 {
-  //visibility: hidden;
+.comment_hide {
+  display: none;
 }

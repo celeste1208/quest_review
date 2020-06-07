@@ -1,0 +1,9 @@
+<% case @comment.opinion_type
+  when "positive" %>
+    $('.comment:eq(0)').append("<%= escape_javascript(render 'add_comment', comment: @comment) %>");
+  <% when "negative" %>
+    $('.comment:eq(1)').append("<%= escape_javascript(render 'add_comment', comment: @comment) %>");
+  <% when "question" %>
+    $('.comment:eq(2)').append("<%= escape_javascript(render 'add_comment', comment: @comment) %>");
+<% end %>
+$("#comment-modal").modal("hide");
