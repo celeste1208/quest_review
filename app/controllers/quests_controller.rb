@@ -22,7 +22,7 @@ class QuestsController < ApplicationController
     @quest = Quest.new(quest_params)
     # 成功・失敗のメッセージを入れる
     if @quest.save
-      redirect_to root_path
+      redirect_to quests_path
     else
       render 'new'
     end
