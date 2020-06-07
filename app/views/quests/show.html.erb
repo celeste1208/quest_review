@@ -1,4 +1,4 @@
-<div class="quest">
+<div class="page_head">
   <div class="container py-5">
     <p>
       <%= "Quest#{@quest.develop_id} : #{@quest.title}" %>
@@ -17,16 +17,27 @@
   <nav class="navbar border border-light d-flex justify-content-center shadow-sm rounded-top py-0">
     <div class="review_header row">
       <div class="review_header_bar"></div>
-      <button class="col review_content_button">良かった点</button>
-      <button class="col review_content_button">改善点</button>
-      <button class="col review_content_button">質問・その他</button>
+      <button class="col review_content_button d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center">
+        <div>良かった点</div>
+        <div class="icon icon-blue text-white m-2"><%= @positive_comments.length %></div>
+      </button>
+      <button class="col review_content_button d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center">
+        <div>改善点</div>
+        <div class="icon icon-red text-white m-2"><%= @negative_comments.length %></div>
+      </button>
+      <button class="col review_content_button d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center">
+        <div>質問・その他</div>
+        <div class="icon icon-yellow text-white m-2"><%= @question_comments.length %></div>
+      </button>
     </div>
   </nav>
   <div>
     <div class="comment_container_container mx-auto overflow-hidden">
       <div class="d-flex justify-content-center comment_container">
         <div class="comment w-100 flex-shrink-0 overflow-auto my-3">
-          <%= render 'comments/form', comment: Comment.new, quest_id: @quest.id, opinion_type: "positive" %>
+          <div class="text-center">
+            <%= render 'comments/form', comment: Comment.new, quest_id: @quest.id, opinion_type: "positive" %>
+          </div>
           <% @positive_comments.each do |comment| %>
             <div class="mx-2 my-3 border-bottom">
               <p><%= "#{comment.user.user_name}さん"%></p>

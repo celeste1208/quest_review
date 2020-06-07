@@ -1,6 +1,6 @@
 jQuery(document).ready(function() {
   $('.review_content_button').click(function() {
-    switch ($(this).text()) {
+    switch ($("div:eq(0)",this).text()) {
       // テキストで取得するのは変更に弱すぎるのでやめる
       case "良かった点":
         $('.review_header_bar').animate({'left':'0%'});
