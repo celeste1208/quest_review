@@ -1,1 +1,28 @@
-hello world
+<div class="page_head py-4">
+  <div class="mx-4">
+    <p class="font-weight-bold">クエストをレビューして、クオリティを上げよう！</p>
+    <p>QuestReviewは、自社で開発中のPS4ゲームソフト「Hoge」について、社内フィードバックを行うためのツールです。</p>
+    <div class="mx-2">
+      <div class="my-4">
+        <p><%= icon('far', 'square-full') %> 使用方法</p>
+        <div class="mx-2">
+          <p>・企画側でコンセプトを明記して、クエストを登録</p>
+          <p>・クエストをプレイした人は、コンセプトを満たしたゲーム体験が出来たかどうかをレビュー（もちろんそれ以外の感想も書いてOK！）</p>
+        </div>
+      </div>
+      <div class="my-4">
+        <p><%= icon('far', 'square-full') %> こんな課題を解決出来ます</p>
+        <div class="mx-2">
+          <p>・クエストの面白さを実現出来ているかどうかが可視化されず、PDCAが回らない問題</p>
+          <p>・どういう観点でフィードバックすれば良いかが分からず、結果的にフィードバックされない問題</p>
+          <p>・気軽にフィードバック出来る、また、フィードバックを一覧出来る場がない問題</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% if !user_signed_in? %>
+  <div class="text-center my-4">
+    <%= link_to "はじめる", new_user_session_path, class: "btn btn-primary" %>
+  </div>
+<% end %>
