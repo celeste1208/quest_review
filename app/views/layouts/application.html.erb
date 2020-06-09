@@ -10,7 +10,7 @@
 
   <body>
     <header>
-      <nav class="navbar bg-white">
+      <nav class="navbar border-bottom">
         <%= link_to 'QuestReview', root_path, class: "navbar-brand" %>
         <% if user_signed_in? %>
           <%= link_to 'クエスト一覧', quests_path %>
