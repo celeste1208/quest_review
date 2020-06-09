@@ -1,9 +1,17 @@
-<% case @comment.opinion_type
-  when "positive" %>
-    $('.comment:eq(0)').append("<%= escape_javascript(render 'add_comment', comment: @comment) %>");
-  <% when "negative" %>
-    $('.comment:eq(1)').append("<%= escape_javascript(render 'add_comment', comment: @comment) %>");
-  <% when "question" %>
-    $('.comment:eq(2)').append("<%= escape_javascript(render 'add_comment', comment: @comment) %>");
+<% if @comment.is_parent %>
+  <% case @comment.opinion_type
+    when "positive" %>
+      $('.comment:eq(0)').append("<%= escape_javascript(render 'parent_comment', comment: @comment) %>");
+      $('.review_content_button:eq(0) div:eq(1)').text("<%= @comments.length %>");
+    <% when "negative" %>
+      $('.comment:eq(1)').append("<%= escape_javascript(render 'parent_comment', comment: @comment) %>");
+      $('.review_content_button:eq(1) div:eq(1)').text("<%= @comments.length %>");
+    <% when "question" %>
+      $('.comment:eq(2)').append("<%= escape_javascript(render 'parent_comment', comment: @comment) %>");
+      $('.review_content_button:eq(2) div:eq(1)').text("<%= @comments.length %>");
+  <% end %>
+<% else %>
+  $('div[data-parent-comment-id=<%= @comment.parent_id %>] .comment_children').
+    append("<%= escape_javascript(render 'comment', comment: @comment) %>");
 <% end %>
 $("#comment-modal").modal("hide");

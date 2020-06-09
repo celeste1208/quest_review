@@ -1,0 +1,2 @@
+$("p[data-comment-id=<%= @comment.id %>]").html("<%= safe_join(@comment.content.split("\n"), tag(:br)) %>");
+$("#comment-modal").modal("hide");

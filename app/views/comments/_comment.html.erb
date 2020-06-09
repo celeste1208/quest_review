@@ -1,0 +1,20 @@
+<div class="d-flex">
+  <div>
+    <%= image_tag '/default_user_image/default_user_image.png', class: "image_icon rounded-circle" %>
+  </div>
+  <div class="ml-2">
+    <p><%= "#{comment.user.user_name}" %></p>
+    <p data-comment-id=<%= "#{comment.id}" %>><%= safe_join(comment.content.split("\n"), tag(:br)) %></p>
+    <div class="mb-4">
+      <% if comment.is_parent %>
+        <%= link_to icon('fas', 'comment-medical'), new_comment_path(
+          quest_id: comment.quest_id,
+          opinion_type: comment.opinion_type,
+          parent_id: comment.id), remote: true %>
+      <% end %>
+      <% if comment.user_id == current_user.id %>
+        <%= link_to icon('fas', 'edit'), edit_comment_path(comment.id), remote: true %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -2,7 +2,7 @@
   <div class="container py-5">
     <p>
       <%= "Quest#{@quest.develop_id} : #{@quest.title}" %>
-      <span class="p-3"><%= link_to "編集する", edit_quest_path(@quest.id) %></span>
+      <span class="px-2"><%= link_to icon('fas', 'edit'), edit_quest_path(@quest.id) %></span>
     </p>
     <p><%= "担当者 : #{@quest.responsible}" %></p>
     <p class="pt-4">ゲーム全体のコンセプト<p>
@@ -10,7 +10,7 @@
     <p>・大自然を開拓<br>資材を集めて道具を作成、そして大自然を開拓し、移動をどんどん効率化することが出来る</p>
     <p>・オンラインでの助け合い<br>他のプレイヤーに武器や資材を提供し、ゲームの攻略を助け合うことが出来る</p>
     <p class="pt-4">このクエストのコンセプト</p>
-    <p><%= simple_format(@quest.content) %></p>
+    <p><%= safe_join(@quest.content.split("\n"), tag(:br)) %></p>
   </div>
 </div>
 <div>
@@ -35,30 +35,21 @@
     <div class="comment_container_container mx-auto overflow-hidden">
       <div class="d-flex justify-content-center comment_container">
         <div class="comment w-100 flex-shrink-0 overflow-auto my-3">
-          <div class="text-center">
+          <div class="text-center border-bottom pb-4">
             <%= render 'comments/form', comment: Comment.new, quest_id: @quest.id, opinion_type: "positive" %>
           </div>
           <% @positive_comments.each do |comment| %>
-            <div class="mx-2 my-3 border-bottom">
-              <p><%= "#{comment.user.user_name}さん"%></p>
-              <p><%= comment.content %></p>
-            </div>
+            <%= render 'comments/parent_comment', comment: comment %>
           <% end %>
         </div>
         <div class="comment w-100 flex-shrink-0 overflow-auto my-3">
           <% @negative_comments.each do |comment| %>
-            <div class="mx-2 my-3 border-bottom">
-              <p><%= "#{comment.user.user_name}さん"%></p>
-              <p><%= comment.content %></p>
-            </div>
+            <%= render 'comments/parent_comment', comment: comment %>
           <% end %>
         </div>
         <div class="comment w-100 flex-shrink-0 overflow-auto my-3">
           <% @question_comments.each do |comment| %>
-            <div class="mx-2 my-3 border-bottom">
-              <p><%= "#{comment.user.user_name}さん"%></p>
-              <p><%= comment.content %></p>
-            </div>
+            <%= render 'comments/parent_comment', comment: comment %>
           <% end %>
         </div>
       </div>
