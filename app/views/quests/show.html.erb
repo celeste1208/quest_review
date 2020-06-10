@@ -17,15 +17,15 @@
   <nav class="navbar border border-light d-flex justify-content-center shadow-sm rounded-top py-0">
     <div class="review_header row">
       <div class="review_header_bar"></div>
-      <button class="col review_content_button d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center">
+      <button class="col review_content_button d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center active_button font-weight-bold">
         <div>良かった点</div>
         <div class="icon icon-blue text-white m-2"><%= @positive_comments.length %></div>
       </button>
-      <button class="col review_content_button d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center">
+      <button class="col review_content_button d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center inactive_button font-weight-bold">
         <div>改善点</div>
         <div class="icon icon-red text-white m-2"><%= @negative_comments.length %></div>
       </button>
-      <button class="col review_content_button d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center">
+      <button class="col review_content_button d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center inactive_button font-weight-bold">
         <div>質問・その他</div>
         <div class="icon icon-yellow text-white m-2"><%= @question_comments.length %></div>
       </button>
@@ -35,32 +35,30 @@
     <div class="comment_container_container mx-auto overflow-hidden">
       <div class="d-flex justify-content-center comment_container">
         <div class="comment w-100 flex-shrink-0 overflow-auto my-3">
-          <div class="text-center border-bottom pb-4">
-            <%= render 'comments/form', comment: Comment.new, quest_id: @quest.id, opinion_type: "positive" %>
+          <div class="text-center border-bottom pb-4 mt-2 mb-4 comment_form">
+            <%= render 'comments/form', comment: Comment.new(quest_id: @quest.id, opinion_type: "positive") %>
           </div>
           <% @positive_comments.each do |comment| %>
             <%= render 'comments/parent_comment', comment: comment %>
           <% end %>
         </div>
         <div class="comment w-100 flex-shrink-0 overflow-auto my-3">
+          <div class="text-center border-bottom pb-4 mt-2 mb-4 comment_form">
+            <%= render 'comments/form', comment: Comment.new(quest_id: @quest.id, opinion_type: "negative") %>
+          </div>
           <% @negative_comments.each do |comment| %>
             <%= render 'comments/parent_comment', comment: comment %>
           <% end %>
         </div>
         <div class="comment w-100 flex-shrink-0 overflow-auto my-3">
+          <div class="text-center border-bottom pb-4 mt-2 mb-4 comment_form">
+            <%= render 'comments/form', comment: Comment.new(quest_id: @quest.id, opinion_type: "question") %>
+          </div>
           <% @question_comments.each do |comment| %>
             <%= render 'comments/parent_comment', comment: comment %>
           <% end %>
         </div>
       </div>
-    </div>
-    <div class="sticky_test">
-      <%= link_to new_comment_path(quest_id: @quest.id, opinion_type: "positive"), remote: true do %>
-        <button class="rounded-pill px-3 py-3 d-flex justify-content-center mx-auto shadow border border-white">
-          <div class="icon text-white my-auto mx-2">＋</div>
-          <div class="font-weight-bold mx-2">「良かった点」を投稿</div>
-        </button>
-      <% end %>
     </div>
   </div>
 </div>
@@ -68,4 +66,3 @@
 <p>footer</p>
 <p>footer</p>
 <p>footer</p>
-<div id="comment-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

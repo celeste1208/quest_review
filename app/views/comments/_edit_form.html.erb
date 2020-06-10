@@ -1,10 +1,12 @@
 <%= form_with model: comment, remote: true do |f| %>
-  <div class="form-group">
-    <%= f.label "「#{opinion(comment.opinion_type)}」をコメント" %><br>
+  <div class="form-group mb-2">
     <%= f.text_area :content, cols: "55", rows: "5"%>
   </div>
   <%= f.hidden_field :quest_id, value: comment.quest_id %>
   <%= f.hidden_field :opinion_type, value: comment.opinion_type %>
   <%= f.hidden_field :parent_id, value: comment.parent_id %>
-  <%= f.submit "コメントする", class: "btn btn-primary" %>
+  <%= f.submit "Save", class: "btn btn-primary" %>
+  <button type="button" class="btn btn-light comment_edit_cancel" data-edit-comment-cancel-id=<%= comment.id %>>
+    Cancel
+  </button>
 <% end %>

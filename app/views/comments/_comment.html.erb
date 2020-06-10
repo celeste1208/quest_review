@@ -1,20 +1,34 @@
-<div class="d-flex">
+<div class="d-flex" data-comment-id=<%= comment.id %>>
   <div>
-    <%= image_tag '/default_user_image/default_user_image.png', class: "image_icon rounded-circle" %>
+    <%= image_tag comment.user.image.url, class: "image_icon rounded-circle" %>
   </div>
   <div class="ml-2">
     <p><%= "#{comment.user.user_name}" %></p>
-    <p data-comment-id=<%= "#{comment.id}" %>><%= safe_join(comment.content.split("\n"), tag(:br)) %></p>
+    <div class="comment_content">
+      <p data-comment-id=<%= "#{comment.id}" %>><%= safe_join(comment.content.split("\n"), tag(:br)) %></p>
+    </div>
+    <div class="mb-4 comment_edit_form">
+      <%= render 'comments/edit_form', comment: comment %>
+    </div>
     <div class="mb-4">
-      <% if comment.is_parent %>
-        <%= link_to icon('fas', 'comment-medical'), new_comment_path(
-          quest_id: comment.quest_id,
-          opinion_type: comment.opinion_type,
-          parent_id: comment.id), remote: true %>
-      <% end %>
-      <% if comment.user_id == current_user.id %>
-        <%= link_to icon('fas', 'edit'), edit_comment_path(comment.id), remote: true %>
-      <% end %>
+      <div>
+        <% if comment.is_parent %>
+          <button class="comment_icon reply_button" data-replied-id=<%= comment.id %>>
+            <%= icon('fas', 'comment-medical') %>
+          </button>
+        <% end %>
+        <% if comment.user_id == current_user.id %>
+          <button class="comment_icon comment_edit_button" data-edit-comment-id=<%= comment.id %>>
+            <%= icon('fas', 'edit') %>
+          </button>
+        <% end %>
+      </div>
+      <div class="my-4 reply_form">
+        <% if comment.is_parent %>
+          <%= render 'comments/reply_form', comment: Comment.new(
+            quest_id: comment.quest_id, opinion_type: comment.opinion_type, parent_id: comment.id) %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

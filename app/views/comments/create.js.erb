@@ -10,8 +10,12 @@
       $('.comment:eq(2)').append("<%= escape_javascript(render 'parent_comment', comment: @comment) %>");
       $('.review_content_button:eq(2) div:eq(1)').text("<%= @comments.length %>");
   <% end %>
+  $('.comment_form textarea').val("");
 <% else %>
   $('div[data-parent-comment-id=<%= @comment.parent_id %>] .comment_children').
     append("<%= escape_javascript(render 'comment', comment: @comment) %>");
+  $('div[data-comment-id=' + <%= @comment.parent_id %> + '] .reply_form').hide();
+  $('div[data-comment-id=' + <%= @comment.parent_id %> + '] .reply_form textarea').val("");
 <% end %>
-$("#comment-modal").modal("hide");
+$('div[data-comment-id=' + <%= @comment.id %> + ']').get(0).
+  scrollIntoView({behavior: 'smooth', block: 'center'});

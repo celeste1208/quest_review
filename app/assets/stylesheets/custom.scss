@@ -3,6 +3,12 @@
   background-color: #F5F9FD;
 }
 
+.navbar-toggler {
+  &:focus {
+    outline: 0;
+  }
+}
+
 .review_header {
   position: relative;
   width: 500px;
@@ -12,7 +18,7 @@
   position: absolute;
   height: 2px;
   width: 33.3%;
-  bottom: -1px;
+  bottom: -2px;
   background-color: black;
   left: 0%;
 }
@@ -20,11 +26,19 @@
 .review_content_button {
   border: none;
   text-align: center;
-  padding: 10px 0;
+  padding: 5px 0;
   
   &:focus {
     outline: 0;
   }
+}
+
+.active_button {
+  font-weight: bold;
+}
+
+.inactive_button {
+  color: #949faf;
 }
 
 .comment_container_container {
@@ -40,12 +54,6 @@
   
   transition: transform(0.35s);
   //transform: translate(-100%, 0px);
-}
-
-.sticky_test {
-  position: -webkit-sticky;
-  position: sticky;
-  bottom: 20px;
 }
 
 .icon {
@@ -72,3 +80,34 @@
   width: 32px;
   height: 32px;
 }
+
+.image_icon_margin {
+  margin-left: 32px;
+}
+
+.comment_edit_form {
+  display: none;
+}
+
+.reply_form {
+  display: none;
+}
+
+.comment_icon {
+  color: #007bff;
+  border: none;
+  padding: 0;
+  
+  &:hover {
+    color: #0056b3;
+  }
+  
+  &:focus {
+    outline: 0;
+  }
+}
+
+.quest_order {
+  background-color: #FDFDFC;
+}
+

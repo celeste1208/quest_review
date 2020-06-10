@@ -1,0 +1,19 @@
+<div class="d-flex">
+  <div>
+    <%= image_tag current_user.image.url, class: "image_icon rounded-circle" %>
+  </div>
+  <div class="ml-2">
+    <%= form_with model: comment, remote: true do |f| %>
+      <div class="form-group mb-2">
+        <%= f.text_area :content, cols: "55", rows: "5", placeholder: "返信"%>
+      </div>
+      <%= f.hidden_field :quest_id, value: comment.quest_id %>
+      <%= f.hidden_field :opinion_type, value: comment.opinion_type %>
+      <%= f.hidden_field :parent_id, value: comment.parent_id %>
+      <%= f.submit "Save", class: "btn btn-primary" %>
+      <button type="button" class="btn btn-light reply_cancel" data-reply-canceled-id=<%= comment.parent_id %>>
+        Cancel
+      </button>
+    <% end %>
+  </div>
+</div>
