@@ -6,24 +6,31 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application','data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header>
-      <nav class="navbar border-bottom">
-        <%= link_to 'QuestReview', root_path, class: "navbar-brand" %>
-        <% if user_signed_in? %>
-          <%= link_to 'クエスト一覧', quests_path %>
-          <%= link_to 'クエスト登録', new_quest_path %>
-          <!--strong><%#= link_to current_user.user_name, pages_show_path %></strong-->
-          <%= link_to 'プロフィール変更', edit_user_registration_path %>
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to 'ログイン', new_user_session_path %>
-        <% end %>
+      <nav class="navbar navbar-expand-sm navbar-light border-bottom justify-content-between">
+            <%= link_to 'QuestReview', root_path, class: "navbar-brand text-primary" %>
+            <% if user_signed_in? %>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse my-1 my-sm-0" id="navbarToggler">
+                <div class="d-flex flex-column flex-sm-row justify-content-sm-end" style="width: 100%;">
+                  <div><%= link_to 'クエスト一覧', quests_path, class: "mx-2" %></div>
+                  <div><%= link_to 'クエスト登録', new_quest_path, class: "mx-2" %></div>
+                  <div><%= link_to '設定', user_path(current_user.id), class: "mx-2" %></div>
+                  <div><%= link_to 'プロフィール変更', edit_user_registration_path, class: "mx-2" %></div>
+                  <div><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "mx-2" %></div>
+                </div>
+              </div>
+            <% else %>
+              <%= link_to 'ログイン', new_user_session_path %>
+            <% end %>
       </nav>
     </header>
     <%= yield %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', 'data-turbolinks-eva': 'false' %>
   </body>
 </html>
