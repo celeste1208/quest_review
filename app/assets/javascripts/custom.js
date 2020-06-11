@@ -60,3 +60,18 @@ jQuery(document).on('click', '.reply_cancel', function() {
     $('div[data-comment-id=' + comment_id + '] .reply_form').hide();
     $('div[data-comment-id=' + comment_id + '] .reply_form textarea').val("");
 });
+
+jQuery(document).on('turbolinks:load', function() { 
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+       $('.img_prev').attr('src', e.target.result);
+     }
+     reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $('.img_file').change(function() {
+    readURL(this);
+  }); 
+});

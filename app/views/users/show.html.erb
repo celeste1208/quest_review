@@ -1,0 +1,44 @@
+<div class="page_head p-4">
+  <p>プロフィール</p>
+  <div class="d-flex mb-4 profile">
+    <img src="<%= @user.image_url %>" class="rounded-circle mx-2", width="64", height="64">
+    <div class="d-flex flex-column mx-2">
+      <div>
+        <%= @user.user_name %>
+      </div>
+      <div>
+        <button class="comment_icon bg-transparent" data-toggle="modal" data-target="#profile_modal">
+          <%= icon('fas', 'camera') %>
+          <span>画像を変更</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <p><%= link_to "登録情報の変更", edit_user_registration_path %></p>
+  <p><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></p>
+</div>
+<div class="modal fade" id="profile_modal" tabindex="-1" role="dialog" aria-labelledby="profile_modal_label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="profile_modal_label">プロフィール画像変更</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="<%= @user.image_url %>" class="rounded-circle mb-3 img_prev", width="64", height="64">
+        <%= form_with model: @user, remote: true do |f| %>
+          <%= render "users/shared/error_messages", resource: @user %>
+          <div class="form-group">
+            <%#jpeg,pngのみでも良いかも%>
+            <%= f.file_field :image, class: "d-block img_file", accept: "image/*" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Update", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

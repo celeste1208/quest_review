@@ -1,5 +1,3 @@
 $("p[data-comment-id=<%= @comment.id %>]").html("<%= safe_join(@comment.content.split("\n"), tag(:br)) %>");
 $('div[data-comment-id=' + <%= @comment.id %> + '] .comment_edit_form').hide();
 $('div[data-comment-id=' + <%= @comment.id %> + '] .comment_content').show();
-
-$("#comment-modal").modal("hide");

@@ -1,6 +1,6 @@
 <div class="d-flex">
   <div>
-    <%= image_tag current_user.image.url, class: "image_icon rounded-circle" %>
+    <%= image_tag current_user.decorate.image_url, class: "image_icon rounded-circle" %>
   </div>
   <div class="ml-2">
     <%= form_with model: comment, remote: true do |f| %>

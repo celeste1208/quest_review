@@ -1,6 +1,6 @@
 <div class="d-flex" data-comment-id=<%= comment.id %>>
   <div>
-    <%= image_tag comment.user.image.url, class: "image_icon rounded-circle" %>
+    <%= image_tag comment.user.decorate.image_url, class: "image_icon rounded-circle" %>
   </div>
   <div class="ml-2">
     <p><%= "#{comment.user.user_name}" %></p>
