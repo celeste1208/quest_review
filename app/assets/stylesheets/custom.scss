@@ -16,6 +16,10 @@
   @media (min-width: 526px) {
     width: 500px;
   }
+  
+  @media (max-width: 526px) {
+    font-size: 14px;
+  }
 }
 
 .review_header_bar {
