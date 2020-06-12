@@ -12,14 +12,13 @@
 .review_header {
   position: relative;
   width: 95vw;
+  font-size: 14px;
   
   @media (min-width: 526px) {
     width: 500px;
+    font-size: 15px;
   }
-  
-  @media (max-width: 526px) {
-    font-size: 14px;
-  }
+
 }
 
 .review_header_bar {
