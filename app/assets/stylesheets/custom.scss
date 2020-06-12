@@ -11,7 +11,11 @@
 
 .review_header {
   position: relative;
-  width: 500px;
+  width: 95vw;
+  
+  @media (min-width: 526px) {
+    width: 500px;
+  }
 }
 
 .review_header_bar {
@@ -42,18 +46,35 @@
 }
 
 .comment_container_container {
-  width: 500px;
+  width: 95vw;
+  
+  @media (min-width: 526px) {
+    width: 500px;
+  }
 }
 
 .comment_container {
   position: relative;
-  width: 500px;
-  left: 500px;
+  //width: 500px;
   
   display: -webkit-box;
   
   transition: transform(0.35s);
   //transform: translate(-100%, 0px);
+  
+  width: 95vw;
+  
+  @media (min-width: 526px) {
+    width: 500px;
+  }
+}
+
+.comment {
+  width: 95vw;
+  
+  @media (min-width: 526px) {
+    width: 500px;
+  }
 }
 
 .icon {

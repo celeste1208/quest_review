@@ -2,7 +2,7 @@
   <div>
     <%= image_tag comment.user.decorate.image_url, class: "image_icon rounded-circle" %>
   </div>
-  <div class="ml-2">
+  <div class="ml-2", style="width: 100%;">
     <p><%= "#{comment.user.user_name}" %></p>
     <div class="comment_content">
       <p data-comment-id=<%= "#{comment.id}" %>><%= safe_join(comment.content.split("\n"), tag(:br)) %></p>

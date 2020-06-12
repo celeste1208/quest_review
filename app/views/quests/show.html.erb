@@ -33,7 +33,7 @@
   </nav>
   <div>
     <div class="comment_container_container mx-auto overflow-hidden">
-      <div class="d-flex justify-content-center comment_container">
+      <div class="comment_container">
         <div class="comment w-100 flex-shrink-0 overflow-auto my-3">
           <div class="text-center border-bottom pb-4 mt-2 mb-4 comment_form">
             <%= render 'comments/form', comment: Comment.new(quest_id: @quest.id, opinion_type: "positive") %>

@@ -1,6 +1,6 @@
 <%= form_with model: comment, remote: true do |f| %>
   <div class="form-group mb-2">
-    <%= f.text_area :content, cols: "55", rows: "5"%>
+    <%= f.text_area :content, style: "width: 90%; height: 150px;"%>
   </div>
   <%= f.hidden_field :quest_id, value: comment.quest_id %>
   <%= f.hidden_field :opinion_type, value: comment.opinion_type %>
