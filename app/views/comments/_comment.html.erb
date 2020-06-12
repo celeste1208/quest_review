@@ -13,12 +13,12 @@
     <div class="mb-4">
       <div>
         <% if comment.is_parent %>
-          <button class="comment_icon reply_button" data-replied-id=<%= comment.id %>>
+          <button class="comment_icon reply_button bg-transparent" data-replied-id=<%= comment.id %>>
             <%= icon('fas', 'comment-medical') %>
           </button>
         <% end %>
         <% if comment.user_id == current_user.id %>
-          <button class="comment_icon comment_edit_button" data-edit-comment-id=<%= comment.id %>>
+          <button class="comment_icon comment_edit_button bg-transparent" data-edit-comment-id=<%= comment.id %>>
             <%= icon('fas', 'edit') %>
           </button>
         <% end %>

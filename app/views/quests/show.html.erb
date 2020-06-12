@@ -17,15 +17,15 @@
   <nav class="navbar border border-light d-flex justify-content-center shadow-sm rounded-top py-0">
     <div class="review_header row">
       <div class="review_header_bar"></div>
-      <button class="col review_content_button d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center active_button font-weight-bold">
+      <button class="col review_content_button d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center active_button font-weight-bold bg-transparent">
         <div>良かった点</div>
         <div class="icon icon-blue text-white m-2"><%= @positive_comments.length %></div>
       </button>
-      <button class="col review_content_button d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center inactive_button font-weight-bold">
+      <button class="col review_content_button d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center inactive_button font-weight-bold bg-transparent">
         <div>改善点</div>
         <div class="icon icon-red text-white m-2"><%= @negative_comments.length %></div>
       </button>
-      <button class="col review_content_button d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center inactive_button font-weight-bold">
+      <button class="col review_content_button d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center inactive_button font-weight-bold bg-transparent">
         <div>質問・その他</div>
         <div class="icon icon-yellow text-white m-2"><%= @question_comments.length %></div>
       </button>
