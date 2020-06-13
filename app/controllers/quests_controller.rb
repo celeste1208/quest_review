@@ -1,5 +1,5 @@
 class QuestsController < ApplicationController
-  before_action :set_quest, only: [:show, :edit, :update]
+  before_action :set_quest, only: [:show, :edit, :update, :destroy]
 
   def index
     @quests = Quest.all.order(:develop_id)
@@ -7,6 +7,16 @@ class QuestsController < ApplicationController
   
   def new
     @quest = Quest.new
+  end
+  
+  def create
+    @quest = Quest.new(quest_params)
+    # 成功・失敗のメッセージを入れる
+    if @quest.save
+      redirect_to quests_path
+    else
+      render 'new'
+    end
   end
   
   def show
@@ -21,20 +31,20 @@ class QuestsController < ApplicationController
   def edit
   end
   
-  def create
-    @quest = Quest.new(quest_params)
-    # 成功・失敗のメッセージを入れる
-    if @quest.save
-      redirect_to quests_path
-    else
-      render 'new'
-    end
-  end
-  
   def update
     # 成功・失敗のメッセージを入れる
     @quest.update(quest_params)
     render edit_quest_path(@quest.id)
+  end
+  
+  def destroy
+    if @quest.destroy
+      flash[:notice] = "Sccess to delete quest"
+      redirect_to quests_path
+    else 
+      flash[:alert] = "Fail to delete quest"
+      redirect_to edit_quest_path(@quest.id)
+    end
   end
   
   private

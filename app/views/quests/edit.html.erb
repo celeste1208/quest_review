@@ -1,1 +1,14 @@
-<%= render 'form', quest: @quest %>
+<div class="page_head p-4">
+  <% flash.each do |key, value| %>
+    <% key = "info" if key == "notice" %>
+    <% key = "danger"  if key == "alert" %>
+    <%= content_tag :div, value, class: "alert alert-#{key}" %>
+  <% end %>
+  <%= render 'form', quest: @quest %>
+  <div class="my-5">
+    <%= link_to quest_path(@quest.id), method: :delete, data: { confirm: '削除しますか？' } do %>
+      <%= icon('fas', 'trash-alt') %>
+      <span>クエストの削除</span>
+    <% end %>
+  </div>
+</div>
