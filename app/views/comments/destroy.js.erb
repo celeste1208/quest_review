@@ -1,0 +1,13 @@
+<% if @comment.is_parent %>
+  $("div[data-parent-comment-id=<%= @comment.id %>]").remove();
+  <% case @comment.opinion_type
+  when "positive" %>
+    $('.review_content_button:eq(0) div:eq(1)').text("<%= @comments.length %>");
+  <% when "negative" %>
+    $('.review_content_button:eq(1) div:eq(1)').text("<%= @comments.length %>");
+  <% when "question" %>
+    $('.review_content_button:eq(2) div:eq(1)').text("<%= @comments.length %>");
+  <% end %>
+<% else %>
+  $("div[data-comment-id=<%= @comment.id %>]").remove();
+<% end %>

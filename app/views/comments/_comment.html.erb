@@ -21,6 +21,11 @@
           <button class="comment_icon comment_edit_button bg-transparent" data-edit-comment-id=<%= comment.id %>>
             <%= icon('fas', 'edit') %>
           </button>
+          <%= link_to comment_path(comment.id), remote: true, method: :delete, data: { confirm: '削除しますか？' } do %>
+            <button class="comment_icon bg-transparent" data-delete-comment-id=<%= comment.id %>>
+              <%= icon('fas', 'trash-alt') %>
+            </button>
+          <% end %>
         <% end %>
       </div>
       <div class="my-4 reply_form">

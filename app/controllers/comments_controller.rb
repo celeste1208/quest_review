@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:edit, :update]
+  before_action :set_comment, only: [:edit, :update, :destroy]
   
   def new
     @comment = Comment.new(
@@ -19,6 +19,11 @@ class CommentsController < ApplicationController
   def update
     # 成功・失敗のメッセージを入れる
     @comment.update(comment_params)
+  end
+  
+  def destroy
+    @comment.destroy
+    @comments = Comment.where(quest_id: @comment.quest_id, opinion_type: @comment.opinion_type, parent_id: nil)
   end
   
   private
