@@ -1,12 +1,12 @@
 <div class="page_head p-4">
   
+  <h2>Log in</h2>
+  
   <% flash.each do |key, value| %>
     <% key = "info" if key == "notice" %>
     <% key = "danger"  if key == "alert" %>
     <%= content_tag :div, value, class: "alert alert-#{key}" %>
   <% end %>
-  
-  <h2>Log in</h2>
   
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">

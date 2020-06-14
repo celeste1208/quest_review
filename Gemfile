@@ -23,6 +23,12 @@ gem 'jquery-rails'
 # Devise
 gem 'devise'
 
+# Deviseの日本語化
+gem 'devise-i18n'
+
+# メッセージの日本語化
+gem 'rails-i18n'
+
 # FontAwesome
 gem 'font-awesome-sass'
 
@@ -34,9 +40,6 @@ gem 'draper'
 
 # DB論理削除
 gem 'paranoia'
-
-# validationエラーメッセージの日本語化
-gem 'rails-i18n'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
