@@ -21,8 +21,10 @@
     </div>
   </div>
 </div>
-<% if !user_signed_in? %>
-  <div class="text-center my-4">
+<div class="text-center my-4">
+  <% if user_signed_in? %>
+    <%= link_to "クエスト一覧", quests_path, class: "btn btn-primary" %>
+  <% else %>
     <%= link_to "はじめる", new_user_session_path, class: "btn btn-primary" %>
-  </div>
-<% end %>
+  <% end %>
+</div>
