@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  acts_as_paranoid
+  has_many :comment, dependent: :destroy
+  
   validates :user_name, presence: true, uniqueness: true
   
   # Include default devise modules. Others available are:
