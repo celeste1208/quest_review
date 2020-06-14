@@ -19,20 +19,18 @@
     <% end %>
   
     <div class="form-group">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+      <%= f.label :password, "新しいパスワード（#{@minimum_password_length}文字以上）" %>
       <%= f.password_field :password, autocomplete: "new-password", class: "d-block" %>
-      <% if @minimum_password_length %>
-        <em><%= @minimum_password_length %> characters minimum</em>
-      <% end %>
+      <span>※パスワード更新しない場合は空欄可</span>
     </div>
   
     <div class="form-group">
-      <%= f.label :password_confirmation %>
+      <%= f.label :password_confirmation, "新しいパスワード（確認用）" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "d-block" %>
     </div>
   
     <div class="form-group">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+      <%= f.label :current_password %>
       <%= f.password_field :current_password, autocomplete: "current-password", class: "d-block" %>
     </div>
   
@@ -41,9 +39,11 @@
     </div>
   <% end %>
   
-  <h3>Cancel my account</h3>
+  <div class="my-4">
+    <%= link_to registration_path(resource_name), method: :delete, data: { confirm: '削除しますか？' } do %>
+      <%= icon('fas', 'trash-alt') %>
+      <span>アカウントの削除</span>
+    <% end %>
+  </div>
   
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
-  
-  <%= link_to "Back", :back %>
 </div>
