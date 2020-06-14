@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :authenticate_owner, only: [:edit, :update, :destroy] 
   
   def new
     @comment = Comment.new(
@@ -34,5 +36,9 @@ class CommentsController < ApplicationController
     def comment_params
       params[:comment][:user_id] = current_user.id
       params.require(:comment).permit(:user_id, :quest_id, :content, :opinion_type, :parent_id)
+    end
+    
+    def authenticate_owner
+      redirect_to root_path if current_user.id != @comment.user_id
     end
 end
