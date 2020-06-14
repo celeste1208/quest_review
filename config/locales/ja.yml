@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    attributes:
+      quest:
+        develop_id: Questid
+        responsible: 担当者
+        title: タイトル

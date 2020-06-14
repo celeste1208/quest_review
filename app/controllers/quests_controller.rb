@@ -11,8 +11,8 @@ class QuestsController < ApplicationController
   
   def create
     @quest = Quest.new(quest_params)
-    # 成功・失敗のメッセージを入れる
     if @quest.save
+      flash[:notice] = "クエストの登録に成功しました"
       redirect_to quests_path
     else
       render 'new'
@@ -33,15 +33,19 @@ class QuestsController < ApplicationController
   
   def update
     # 成功・失敗のメッセージを入れる
-    @quest.update(quest_params)
-    render edit_quest_path(@quest.id)
+    if @quest.update(quest_params)
+      redirect_to quest_path(@quest.id)
+    else
+      render 'edit'
+    end
   end
   
   def destroy
     if @quest.destroy
-      flash[:notice] = "Sccess to delete quest"
+      flash[:notice] = "クエストの削除が完了しました"
       redirect_to quests_path
     else 
+      # いる？消すならViewのFlash対応も消す
       flash[:alert] = "Fail to delete quest"
       redirect_to edit_quest_path(@quest.id)
     end
