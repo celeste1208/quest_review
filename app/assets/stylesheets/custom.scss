@@ -135,3 +135,11 @@
   background-color: #FDFDFC;
 }
 
+.quest_form {
+  width: 95vw;
+  
+  @media (min-width: 526px) {
+    width: 500px;
+  }
+}
+
