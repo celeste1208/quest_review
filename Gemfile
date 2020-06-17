@@ -35,6 +35,9 @@ gem 'font-awesome-sass'
 # CarrierWave
 gem 'carrierwave'
 
+# S3に画像保存
+gem 'fog-aws'
+
 # Decorator
 gem 'draper'
 
