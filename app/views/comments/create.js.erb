@@ -1,4 +1,4 @@
-<% if @comment.is_parent %>
+<% if @comment.parent.blank? %>
   <% case @comment.opinion_type
     when "positive" %>
       $('.comment:eq(0)').append("<%= escape_javascript(render 'parent_comment', comment: @comment) %>");

@@ -1,4 +1,4 @@
-<% if @comment.is_parent %>
+<% if @comment.parent.blank? %>
   $("div[data-parent-comment-id=<%= @comment.id %>]").remove();
   <% case @comment.opinion_type
   when "positive" %>
