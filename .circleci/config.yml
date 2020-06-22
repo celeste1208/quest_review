@@ -5,11 +5,12 @@ jobs:
       - image: circleci/ruby:2.6.3-node-browsers
         environment:
           RAILS_ENV: test
-          DB_HOST: 127.0.0.1
-          DB_USERNAME: 'root'
-          DB_PASSWORD: ''
 
       - image: circleci/mysql:5.7
+        environment:
+          MYSQL_ROOT_HOST: '127.0.0.1'
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: root
 
     working_directory: ~/quest_review
 
@@ -34,6 +35,10 @@ jobs:
           paths:
             - vendor/bundle
 
+      # DB setup
+      - run: mv ./config/database.yml.ci ./config/database.yml
+
+      # DB setup
       - run:
           name: Database Setup
           command: |
