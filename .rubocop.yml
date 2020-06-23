@@ -63,3 +63,12 @@ Style/RedundantRegexpEscape:
 Style/SlicingWithRange:
   Enabled: true
 
+Layout/CommentIndentation:
+  Enabled: false
+
+Style/RedundantFetchBlock:
+  Enabled: true
+
+Style/BlockComments:
+  Exclude:
+    - 'spec/spec_helper.rb'

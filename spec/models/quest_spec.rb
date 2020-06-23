@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Quest, type: :model do
-
   let!(:quest) { create(:quest) }
 
   it 'validation成功' do
@@ -27,5 +26,4 @@ RSpec.describe Quest, type: :model do
     quest = build(:quest, responsible: nil)
     expect(quest).not_to be_valid
   end
-
 end

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-
   let!(:comment) { create(:comment) }
 
   it 'validation成功' do
@@ -27,5 +26,4 @@ RSpec.describe Comment, type: :model do
     comment = build(:comment, opinion_type: nil)
     expect(comment).not_to be_valid
   end
-
 end

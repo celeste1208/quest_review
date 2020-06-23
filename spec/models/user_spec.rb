@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   let!(:user) { create(:user) }
 
   it 'validation成功' do
@@ -32,5 +31,4 @@ RSpec.describe User, type: :model do
     user = build(:user, password: nil)
     expect(user).not_to be_valid
   end
-
 end
