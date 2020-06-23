@@ -50,3 +50,8 @@ jobs:
           name: Rubocop
           command: bundle exec rubocop
 
+      # Rspec
+      - run:
+          name: Rspec
+          command: bundle exec rspec
+
