@@ -13,7 +13,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'user_nameがユニークでない場合はvalidation失敗' do
-    user2 = build(:user, user_name: 'user_name', email: 'email2@example.com')
+    user2 = build(:user, user_name: user.user_name)
     expect(user2).not_to be_valid
   end
 
@@ -23,7 +23,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'emailがユニークでない場合はvalidation失敗' do
-    user2 = build(:user, user_name: 'user_name2', email: 'email@example.com')
+    user2 = build(:user, email: user.email)
     expect(user2).not_to be_valid
   end
 

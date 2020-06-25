@@ -13,7 +13,7 @@ RSpec.describe Quest, type: :model do
   end
 
   it 'develop_idがユニークでない場合はvalidation失敗' do
-    quest2 = build(:quest)
+    quest2 = build(:quest, develop_id: quest.develop_id)
     expect(quest2).not_to be_valid
   end
 
