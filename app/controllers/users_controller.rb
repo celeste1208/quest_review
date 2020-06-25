@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   before_action :authenticate_owner
   before_action :set_user, only: %i[show update]
 
-  def show; end
+  def show
+  end
 
   def update
     @user.update(user_params)

@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :quest, class: Quest do
-    develop_id  { 1 }
-    title       { 'title' }
-    responsible { 'responsible' }
+    sequence(:develop_id)  { |n| n }
+    title                  { 'quest_title' }
+    responsible            { 'quest_responsible' }
+    content                { 'quest_content' }
   end
 end

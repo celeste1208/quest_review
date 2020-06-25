@@ -29,10 +29,10 @@ class QuestsController < ApplicationController
                                 .includes(:user, children: :user)
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
-    # 成功・失敗のメッセージを入れる
     if @quest.update(quest_params)
       redirect_to quest_path(@quest.id)
     else
@@ -41,14 +41,9 @@ class QuestsController < ApplicationController
   end
 
   def destroy
-    if @quest.destroy
-      flash[:notice] = 'クエストの削除が完了しました'
-      redirect_to quests_path
-    else
-      # いる？消すならViewのFlash対応も消す
-      flash[:alert] = 'Fail to delete quest'
-      redirect_to edit_quest_path(@quest.id)
-    end
+    @quest.destroy!
+    flash[:notice] = 'クエストの削除が完了しました'
+    redirect_to quests_path
   end
 
   private
