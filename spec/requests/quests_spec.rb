@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "Quests", type: :request do
+RSpec.describe 'Quests', type: :request do
   let(:user)   { create(:user) }
   let!(:quest) { create(:quest) }
 
-  describe "#index" do
+  describe '#index' do
     before do
       sign_in user
       get quests_path
@@ -64,7 +64,7 @@ RSpec.describe "Quests", type: :request do
     end
 
     it 'クエストが作成される' do
-      expect{ post quests_path, params: new_quest_params }.to change(Quest, :count).by(1)
+      expect { post quests_path, params: new_quest_params }.to change(Quest, :count).by(1)
     end
 
     it 'クエスト一覧ページにリダイレクトする' do
@@ -157,7 +157,7 @@ RSpec.describe "Quests", type: :request do
     end
 
     it 'クエストページに戻るリンクが表示される' do
-      expect(response.body).to have_tag('a', with: { href: quest_path(quest.id) } )
+      expect(response.body).to have_tag('a', with: { href: quest_path(quest.id) })
     end
 
     context 'ログインしていないユーザーの場合' do
@@ -205,7 +205,7 @@ RSpec.describe "Quests", type: :request do
       end
 
       it 'クエストページに戻るリンクが表示される' do
-        expect(response.body).to have_tag('a', with: { href: quest_path(quest.id) } )
+        expect(response.body).to have_tag('a', with: { href: quest_path(quest.id) })
       end
     end
 
@@ -227,7 +227,7 @@ RSpec.describe "Quests", type: :request do
     end
 
     it 'クエストが削除される' do
-      expect{ delete quest_path(quest.id) }.to change(Quest, :count).by(-1)
+      expect { delete quest_path(quest.id) }.to change(Quest, :count).by(-1)
     end
 
     it 'クエスト一覧ページにリダイレクトする' do

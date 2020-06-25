@@ -75,3 +75,7 @@ Style/BlockComments:
 
 Style/EmptyMethod:
   EnforcedStyle: expanded
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'

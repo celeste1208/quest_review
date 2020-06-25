@@ -71,8 +71,8 @@ group :development, :test do
   gem 'rubocop', require: false
   # RSpec
   gem 'factory_bot'
-  gem 'rspec-rails', '~> 4.0.0'
   gem 'rspec-html-matchers'
+  gem 'rspec-rails', '~> 4.0.0'
 end
 
 group :development do

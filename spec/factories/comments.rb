@@ -6,18 +6,18 @@ FactoryBot.define do
     association :quest
 
     trait :positive do
-      content      {'positive_content'}
-      opinion_type {'positive'}
+      content      { 'positive_content' }
+      opinion_type { 'positive' }
     end
 
     trait :negative do
-      content      {'negative_content'}
-      opinion_type {'negative'}
+      content      { 'negative_content' }
+      opinion_type { 'negative' }
     end
 
     trait :question do
-      content      {'question_content'}
-      opinion_type {'question'}
+      content      { 'question_content' }
+      opinion_type { 'question' }
     end
   end
 end
