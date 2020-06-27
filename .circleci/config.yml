@@ -85,6 +85,12 @@ jobs:
             bundle exec rake db:create
             bundle exec rake db:schema:load
 
+      # Chrome-driver setup
+      - run:
+          name: Update ChromeDriver Version
+          command: |
+            bundle exec rake webdrivers:chromedriver:update
+
       # Rspec
       - run:
           name: Rspec
