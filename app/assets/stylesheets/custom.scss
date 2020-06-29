@@ -91,11 +91,14 @@ body {
   flex-shrink: 0;
   overflow: auto;
   margin: 1rem 0;
-  //width: 95vw;
+}
 
-  //@media (min-width: 526px) {
-  //  width: 500px;
-  //}
+.comment_form {
+  text-align: center;
+  border-bottom: solid 1px #dee2e6;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .opinion_icon {

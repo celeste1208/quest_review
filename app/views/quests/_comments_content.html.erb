@@ -1,0 +1,8 @@
+<div class="comments_section">
+  <div class="comment_form">
+    <%= render 'comments/form', comment: Comment.new(quest_id: quest_id, opinion_type: opinion_type) %>
+  </div>
+  <% comments.each do |comment| %>
+    <%= render 'comments/parent_comment', comment: comment %>
+  <% end %>
+</div>

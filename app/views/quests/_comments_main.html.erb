@@ -1,28 +1,7 @@
 <div class="comments_visible_area">
   <div class="comments_group">
-    <div class="comments_section">
-      <div class="text-center border-bottom pb-4 mt-2 mb-4 comment_form">
-        <%= render 'comments/form', comment: Comment.new(quest_id: @quest.id, opinion_type: "positive") %>
-      </div>
-      <% @positive_comments.each do |comment| %>
-        <%= render 'comments/parent_comment', comment: comment %>
-      <% end %>
-    </div>
-    <div class="comments_section">
-      <div class="text-center border-bottom pb-4 mt-2 mb-4 comment_form">
-        <%= render 'comments/form', comment: Comment.new(quest_id: @quest.id, opinion_type: "negative") %>
-      </div>
-      <% @negative_comments.each do |comment| %>
-        <%= render 'comments/parent_comment', comment: comment %>
-      <% end %>
-    </div>
-    <div class="comments_section">
-      <div class="text-center border-bottom pb-4 mt-2 mb-4 comment_form">
-        <%= render 'comments/form', comment: Comment.new(quest_id: @quest.id, opinion_type: "question") %>
-      </div>
-      <% @question_comments.each do |comment| %>
-        <%= render 'comments/parent_comment', comment: comment %>
-      <% end %>
-    </div>
+    <%= render 'comments_content', quest_id: @quest.id, opinion_type: "positive", comments: @positive_comments %>
+    <%= render 'comments_content', quest_id: @quest.id, opinion_type: "negative", comments: @negative_comments %>
+    <%= render 'comments_content', quest_id: @quest.id, opinion_type: "question", comments: @question_comments %>
   </div>
 </div>
