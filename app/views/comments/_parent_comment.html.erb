@@ -2,7 +2,7 @@
   <%= render 'comments/comment', comment: comment%>
   <div class="image_icon_margin">
     <div class="ml-2">
-      <div class="comment_children">
+      <div class="child_comments">
         <% comment.children.each do |child_comment| %>
           <%= render 'comments/comment', comment: child_comment %>
         <% end %>

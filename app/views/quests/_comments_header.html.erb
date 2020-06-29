@@ -3,15 +3,15 @@
     <div class="opinion_select_bar"></div>
     <button class="opinion_tab active_button">
       <div>良かった点</div>
-      <div class="opinion_icon icon-blue"><%= positive_comments_num %></div>
+      <div class="opinion_icon icon-blue", id="positive_icon"><%= positive_comments_num %></div>
     </button>
     <button class="opinion_tab inactive_button">
       <div>改善点</div>
-      <div class="opinion_icon icon-red"><%= negative_comments_num %></div>
+      <div class="opinion_icon icon-red", id="negative_icon"><%= negative_comments_num %></div>
     </button>
     <button class="opinion_tab inactive_button">
       <div>質問・その他</div>
-      <div class="opinion_icon icon-yellow"><%= question_comments_num %></div>
+      <div class="opinion_icon icon-yellow", id="question_icon"><%= question_comments_num %></div>
     </button>
   </div>
 </nav>

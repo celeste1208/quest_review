@@ -1,4 +1,4 @@
-<div class="comments_section">
+<div class="comments_section" id="<%= opinion_type %>_comments">
   <div class="comment_form">
     <%= render 'comments/form', comment: Comment.new(quest_id: quest_id, opinion_type: opinion_type) %>
   </div>

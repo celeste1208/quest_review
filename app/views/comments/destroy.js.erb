@@ -1,13 +1,19 @@
+$parentComment = $("div[data-parent-comment-id=<%= @comment.id %>]");
+$childComment = $("div[data-comment-id=<%= @comment.id %>]");
+$positiveIcon = $('#positive_icon');
+$negativeIcon = $('#negative_icon');
+$questionIcon = $('#question_icon');
+
 <% if @comment.parent.blank? %>
-  $("div[data-parent-comment-id=<%= @comment.id %>]").remove();
+  $parentComment.remove();
   <% case @comment.opinion_type
   when "positive" %>
-    $('.opinion_tab:eq(0) div:eq(1)').text("<%= @comments.length %>");
+    $positiveIcon.text("<%= @comments.length %>");
   <% when "negative" %>
-    $('.opinion_tab:eq(1) div:eq(1)').text("<%= @comments.length %>");
+    $negativeIcon.text("<%= @comments.length %>");
   <% when "question" %>
-    $('.opinion_tab:eq(2) div:eq(1)').text("<%= @comments.length %>");
+    $questionIcon.text("<%= @comments.length %>");
   <% end %>
 <% else %>
-  $("div[data-comment-id=<%= @comment.id %>]").remove();
+  $childComment.remove();
 <% end %>

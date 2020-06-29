@@ -1,21 +1,32 @@
+$positiveComments = $('#positive_comments');
+$negativeComments = $('#negative_comments');
+$questionComments = $('#question_comments');
+$positiveIcon = $('#positive_icon');
+$negativeIcon = $('#negative_icon');
+$questionIcon = $('#question_icon');
+$commentFormText = $('.comment_form textarea');
+$childComments =  $('div[data-parent-comment-id=' + <%= @comment.parent_id %> + '] .child_comments');
+$replyForm =  $('div[data-comment-id=' + <%= @comment.parent_id %> + '] .reply_form');
+$replyFormText =  $('div[data-comment-id=' + <%= @comment.parent_id %> + '] .reply_form textarea');
+
 <% if @comment.parent.blank? %>
   <% case @comment.opinion_type
     when "positive" %>
-      $('.comments_section:eq(0)').append("<%= escape_javascript(render 'parent_comment', comment: @comment) %>");
-      $('.opinion_tab:eq(0) div:eq(1)').text("<%= @comments.length %>");
+      $positiveComments.append("<%= escape_javascript(render 'parent_comment', comment: @comment) %>");
+      $positiveIcon.text("<%= @comments.length %>");
     <% when "negative" %>
-      $('.comments_section:eq(1)').append("<%= escape_javascript(render 'parent_comment', comment: @comment) %>");
-      $('.opinion_tab:eq(1) div:eq(1)').text("<%= @comments.length %>");
+      $negativeComments.append("<%= escape_javascript(render 'parent_comment', comment: @comment) %>");
+      $negativeIcon.text("<%= @comments.length %>");
     <% when "question" %>
-      $('.comments_section:eq(2)').append("<%= escape_javascript(render 'parent_comment', comment: @comment) %>");
-      $('.opinion_tab:eq(2) div:eq(1)').text("<%= @comments.length %>");
+      $questionComments.append("<%= escape_javascript(render 'parent_comment', comment: @comment) %>");
+      $questionIcon.text("<%= @comments.length %>");
   <% end %>
-  $('.comment_form textarea').val("");
+  $commentFormText.val("");
 <% else %>
-  $('div[data-parent-comment-id=<%= @comment.parent_id %>] .comment_children').
-    append("<%= escape_javascript(render 'comment', comment: @comment) %>");
-  $('div[data-comment-id=' + <%= @comment.parent_id %> + '] .reply_form').hide();
-  $('div[data-comment-id=' + <%= @comment.parent_id %> + '] .reply_form textarea').val("");
+  $childComments.append("<%= escape_javascript(render 'comment', comment: @comment) %>");
+  $replyForm.hide();
+  $replyFormText.val("");
 <% end %>
-$('div[data-comment-id=' + <%= @comment.id %> + ']').get(0).
-  scrollIntoView({behavior: 'smooth', block: 'center'});
+
+$newComment = $('div[data-comment-id=' + <%= @comment.id %> + ']')
+$newComment.get(0).scrollIntoView({behavior: 'smooth', block: 'center'});

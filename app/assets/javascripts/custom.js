@@ -30,13 +30,13 @@ jQuery(document).on('click', '.opinion_tab', function() {
 jQuery(document).on('click', '.comment_edit_button', function() {
   var comment_id = $(this).data('edit-comment-id');
   $('div[data-comment-id=' + comment_id + '] .comment_edit_form').show();
-  $('div[data-comment-id=' + comment_id + '] .comment_content').hide();
+  $('p[data-comment-id=' + comment_id + ']').hide();
 });
 
 jQuery(document).on('click', '.comment_edit_cancel', function() {
   var comment_id = $(this).data('edit-comment-cancel-id');
   $('div[data-comment-id=' + comment_id + '] .comment_edit_form').hide();
-  $('div[data-comment-id=' + comment_id + '] .comment_content').show();
+  $('p[data-comment-id=' + comment_id + ']').show();
   var comment_content = $('div[data-comment-id=' + comment_id + '] .comment_content p').html();
   comment_content = comment_content.replace(/<br>/g, "\n");
   $('div[data-comment-id=' + comment_id + '] .comment_edit_form textarea').val(comment_content);

@@ -1,3 +1,6 @@
-$("p[data-comment-id=<%= @comment.id %>]").html("<%= safe_join(@comment.content.split("\n"), tag(:br)) %>");
-$('div[data-comment-id=' + <%= @comment.id %> + '] .comment_edit_form').hide();
-$('div[data-comment-id=' + <%= @comment.id %> + '] .comment_content').show();
+$updateComment = $("p[data-comment-id=<%= @comment.id %>]")
+$editForm = $('div[data-comment-id=' + <%= @comment.id %> + '] .comment_edit_form')
+
+$editForm.hide();
+$updateComment.html("<%= safe_join(@comment.content.split("\n"), tag(:br)) %>");
+$updateComment.show();
