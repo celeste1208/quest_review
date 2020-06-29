@@ -5,18 +5,16 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    # 成功・失敗のメッセージを入れる
-    @comment.save
+    @comment.save!
     @comments = Comment.where(quest_id: @comment.quest_id, opinion_type: @comment.opinion_type, parent_id: nil)
   end
 
   def update
-    # 成功・失敗のメッセージを入れる
-    @comment.update(comment_params)
+    @comment.update!(comment_params)
   end
 
   def destroy
-    @comment.destroy
+    @comment.destroy!
     @comments = Comment.where(quest_id: @comment.quest_id, opinion_type: @comment.opinion_type, parent_id: nil)
   end
 
