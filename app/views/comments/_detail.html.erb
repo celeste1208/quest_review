@@ -1,0 +1,2 @@
+<p><%= "#{comment.user.user_name}" %></p>
+<p data-comment-id=<%= "#{comment.id}" %>><%= safe_join(comment.content.split("\n"), tag(:br)) %></p>

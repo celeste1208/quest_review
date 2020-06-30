@@ -16,7 +16,6 @@ body {
   position: relative;
   width: 95vw;
   font-size: 14px;
-
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 
@@ -24,7 +23,6 @@ body {
     width: 500px;
     font-size: 15px;
   }
-
 }
 
 .opinion_select_bar {
@@ -42,7 +40,6 @@ body {
   padding: 5px 0;
   font-weight: bold;
   background-color: transparent;
-
   display: flex;
   flex-direction: column-reverse;
   align-items: center;
@@ -143,15 +140,19 @@ body {
   display: none;
 }
 
+.child_comments {
+  margin-left: 40px;
+}
+
 .comment_icon {
   color: #007bff;
   border: none;
   padding: 0;
-  
+
   &:hover {
     color: #0056b3;
   }
-  
+
   &:focus {
     outline: 0;
   }
@@ -163,7 +164,7 @@ body {
 
 .quest_form {
   width: 95vw;
-  
+
   @media (min-width: 526px) {
     width: 500px;
   }

@@ -37,7 +37,7 @@ jQuery(document).on('click', '.comment_edit_cancel', function() {
   var comment_id = $(this).data('edit-comment-cancel-id');
   $('div[data-comment-id=' + comment_id + '] .comment_edit_form').hide();
   $('p[data-comment-id=' + comment_id + ']').show();
-  var comment_content = $('div[data-comment-id=' + comment_id + '] .comment_content p').html();
+  var comment_content = $('p[data-comment-id=' + comment_id + ']').html();
   comment_content = comment_content.replace(/<br>/g, "\n");
   $('div[data-comment-id=' + comment_id + '] .comment_edit_form textarea').val(comment_content);
 });
@@ -53,7 +53,7 @@ jQuery(document).on('click', '.reply_cancel', function() {
     $('div[data-comment-id=' + comment_id + '] .reply_form textarea').val("");
 });
 
-jQuery(document).on('turbolinks:load', function() { 
+jQuery(document).on('turbolinks:load', function() {
   function readURL(input) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();

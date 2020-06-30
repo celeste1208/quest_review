@@ -1,39 +1,14 @@
 <div class="d-flex mx-auto", style="width: 95%;", data-comment-id=<%= comment.id %>>
-  <div>
-    <%= image_tag comment.user.decorate.image_url, class: "image_icon rounded-circle" %>
-  </div>
+  <%= render 'shared/user/image', image: comment.user.decorate.image_url %>
   <div class="ml-2", style="width: 100%;">
-    <p><%= "#{comment.user.user_name}" %></p>
-    <div class="comment_content">
-      <p data-comment-id=<%= "#{comment.id}" %>><%= safe_join(comment.content.split("\n"), tag(:br)) %></p>
-    </div>
-    <div class="mb-4 comment_edit_form">
-      <%= render 'comments/edit_form', comment: comment %>
-    </div>
+    <%= render 'comments/detail', comment: comment %>
+    <%= render 'comments/edit_form', comment: comment %>
     <div class="mb-4">
-      <div>
-        <% if comment.parent.blank? %>
-          <button class="comment_icon reply_button bg-transparent" data-replied-id=<%= comment.id %>>
-            <%= icon('fas', 'comment-medical') %>
-          </button>
-        <% end %>
-        <% if comment.user_id == current_user.id %>
-          <button class="comment_icon comment_edit_button bg-transparent" data-edit-comment-id=<%= comment.id %>>
-            <%= icon('fas', 'edit') %>
-          </button>
-          <%= link_to comment_path(comment.id), remote: true, method: :delete, data: { confirm: '削除しますか？' } do %>
-            <button class="comment_icon comment_delete_button bg-transparent" data-delete-comment-id=<%= comment.id %>>
-              <%= icon('fas', 'trash-alt') %>
-            </button>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="my-4 reply_form">
-        <% if comment.parent.blank? %>
-          <%= render 'comments/reply_form', comment: Comment.new(
-            quest_id: comment.quest_id, opinion_type: comment.opinion_type, parent_id: comment.id) %>
-        <% end %>
-      </div>
+      <%= render 'comments/icon', comment: comment  %>
+      <% if comment.parent.blank? %>
+        <%= render 'comments/reply_form', comment: Comment.new(
+          quest_id: comment.quest_id, opinion_type: comment.opinion_type, parent_id: comment.id) %>
+      <% end %>
     </div>
   </div>
 </div>

@@ -31,7 +31,6 @@
         <%= form_with model: @user, remote: true do |f| %>
           <%= render "users/shared/error_messages", resource: @user %>
           <div class="form-group">
-            <%#jpeg,pngのみでも良いかも%>
             <%= f.file_field :image, class: "d-block img_file", accept: "image/*" %>
           </div>
           <div class="form-group">

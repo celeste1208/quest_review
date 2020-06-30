@@ -1,12 +1,8 @@
 <div class="my-3 border-bottom" data-parent-comment-id="<%= comment.id %>">
   <%= render 'comments/comment', comment: comment%>
-  <div class="image_icon_margin">
-    <div class="ml-2">
-      <div class="child_comments">
-        <% comment.children.each do |child_comment| %>
-          <%= render 'comments/comment', comment: child_comment %>
-        <% end %>
-      </div>
-    </div>
+  <div class="child_comments">
+    <% comment.children.each do |child_comment| %>
+      <%= render 'comments/comment', comment: child_comment %>
+    <% end %>
   </div>
 </div>
