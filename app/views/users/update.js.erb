@@ -1,2 +1,5 @@
-$('.profile img').attr('src', '<%= @user.image_url%>');
-$("#profile_modal").modal("hide");
+$profileImg = $('.profile img');
+$profileImgModal = $("#profile_img_modal");
+
+$profileImg.attr('src', '<%= @user.image_url %>');
+$profileImgModal.modal("hide");
