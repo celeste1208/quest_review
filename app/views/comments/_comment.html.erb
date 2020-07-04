@@ -5,7 +5,7 @@
     <%= render 'comments/edit_form', comment: comment %>
     <div class="mb-4">
       <%= render 'comments/icon', comment: comment  %>
-      <% if comment.parent.blank? %>
+      <% if comment.parent_id.blank? %>
         <%= render 'comments/reply_form', comment: Comment.new(
           quest_id: comment.quest_id, opinion_type: comment.opinion_type, parent_id: comment.id) %>
       <% end %>
