@@ -83,6 +83,8 @@ group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # N + 1 問題を検知
+  gem 'bullet'
 end
 
 group :test do
