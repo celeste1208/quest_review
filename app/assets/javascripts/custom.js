@@ -1,26 +1,26 @@
 /*global jQuery*/
 /*global $*/
 
-jQuery(document).on('click', '.review_content_button', function() {
-  $('.review_content_button').css({'color':'#949faf'});
+jQuery(document).on('click', '.opinion_tab', function() {
+  $('.opinion_tab').css({'color':'#949faf'});
   $(this).css({'color':'black'});
-  $('.comment_container').children().css('visibility','hidden');
+  $('.comments_group').children().css('visibility','hidden');
   switch ($("div:eq(0)",this).text()) {
     // テキストで取得するのは変更に弱すぎるのでやめる
     case "良かった点":
-      $('.review_header_bar').animate({'left':'0%'}, {duration: 300});
-      $('.comment_container').css({'transform':'translate(0%,0px)'});
-      $('.comment:eq(0)').css('visibility','visible');
+      $('.opinion_select_bar').animate({'left':'0%'}, {duration: 300});
+      $('.comments_group').css({'transform':'translate(0%,0px)'});
+      $('.comments_section:eq(0)').css('visibility','visible');
       break;
     case "改善点":
-      $('.review_header_bar').animate({'left':'33.3%'}, {duration: 300});
-      $('.comment_container').css({'transform':'translate(-100%,0px)'});
-      $('.comment:eq(1)').css('visibility','visible');
+      $('.opinion_select_bar').animate({'left':'33.3%'}, {duration: 300});
+      $('.comments_group').css({'transform':'translate(-100%,0px)'});
+      $('.comments_section:eq(1)').css('visibility','visible');
       break;
     case "質問・その他":
-      $('.review_header_bar').animate({'left':'66.6%'}, {duration: 300});
-      $('.comment_container').css({'transform':'translate(-200%,0px)'});
-      $('.comment:eq(2)').css('visibility','visible');
+      $('.opinion_select_bar').animate({'left':'66.6%'}, {duration: 300});
+      $('.comments_group').css({'transform':'translate(-200%,0px)'});
+      $('.comments_section:eq(2)').css('visibility','visible');
       break;
   }
 });
@@ -30,14 +30,14 @@ jQuery(document).on('click', '.review_content_button', function() {
 jQuery(document).on('click', '.comment_edit_button', function() {
   var comment_id = $(this).data('edit-comment-id');
   $('div[data-comment-id=' + comment_id + '] .comment_edit_form').show();
-  $('div[data-comment-id=' + comment_id + '] .comment_content').hide();
+  $('p[data-comment-id=' + comment_id + ']').hide();
 });
 
 jQuery(document).on('click', '.comment_edit_cancel', function() {
   var comment_id = $(this).data('edit-comment-cancel-id');
   $('div[data-comment-id=' + comment_id + '] .comment_edit_form').hide();
-  $('div[data-comment-id=' + comment_id + '] .comment_content').show();
-  var comment_content = $('div[data-comment-id=' + comment_id + '] .comment_content p').html();
+  $('p[data-comment-id=' + comment_id + ']').show();
+  var comment_content = $('p[data-comment-id=' + comment_id + ']').html();
   comment_content = comment_content.replace(/<br>/g, "\n");
   $('div[data-comment-id=' + comment_id + '] .comment_edit_form textarea').val(comment_content);
 });
@@ -53,7 +53,7 @@ jQuery(document).on('click', '.reply_cancel', function() {
     $('div[data-comment-id=' + comment_id + '] .reply_form textarea').val("");
 });
 
-jQuery(document).on('turbolinks:load', function() { 
+jQuery(document).on('turbolinks:load', function() {
   function readURL(input) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();

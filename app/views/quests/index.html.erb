@@ -1,9 +1,5 @@
 <div class="page_head p-4">
-  <% flash.each do |key, value| %>
-    <% key = "info" if key == "notice" %>
-    <% key = "danger"  if key == "alert" %>
-    <%= content_tag :div, value, class: "alert alert-#{key}" %>
-  <% end %>
+  <%= render 'shared/flash_messages', flash: flash %>
   <% @quests.each do |quest| %>
     <div>
       <p><%= link_to "Quest#{quest.develop_id} : #{quest.title}", quest_path(quest.id) %></p>

@@ -1,12 +1,14 @@
-<%= form_with model: comment, remote: true do |f| %>
-  <div class="form-group mb-2">
-    <%= f.text_area :content, style: "width: 100%; height: 150px;" %>
-  </div>
-  <%= f.hidden_field :quest_id, value: comment.quest_id %>
-  <%= f.hidden_field :opinion_type, value: comment.opinion_type %>
-  <%= f.hidden_field :parent_id, value: comment.parent_id %>
-  <%= f.submit "Save", class: "btn btn-primary" %>
-  <button type="button" class="btn btn-light comment_edit_cancel" data-edit-comment-cancel-id=<%= comment.id %>>
-    Cancel
-  </button>
-<% end %>
+<div class="mb-4 comment_edit_form">
+  <%= form_with model: comment, remote: true do |f| %>
+    <div class="form-group mb-2">
+      <%= f.text_area :content, style: "width: 100%; height: 150px;" %>
+    </div>
+    <%= f.hidden_field :quest_id, value: comment.quest_id %>
+    <%= f.hidden_field :opinion_type, value: comment.opinion_type %>
+    <%= f.hidden_field :parent_id, value: comment.parent_id %>
+    <%= f.submit "Save", class: "btn btn-primary" %>
+    <button type="button" class="btn btn-light comment_edit_cancel" data-edit-comment-cancel-id=<%= comment.id %>>
+      Cancel
+    </button>
+  <% end %>
+</div>

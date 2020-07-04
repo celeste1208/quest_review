@@ -1,64 +1,13 @@
 <div class="page_head">
-  <div class="container py-5">
-    <p>
-      <%= "Quest#{@quest.develop_id} : #{@quest.title}" %>
-      <span class="px-2"><%= link_to icon('fas', 'edit'), edit_quest_path(@quest.id) %></span>
-    </p>
-    <p><%= "担当者 : #{@quest.responsible}" %></p>
-    <p class="pt-4">ゲーム全体のコンセプト<p>
-    <p>・ルート選びの自由さ<br>オープンワールドを舞台に、プレイヤーが目的地に到達するために、自由な攻略ルートを選択することが出来る</p>
-    <p>・大自然を開拓<br>資材を集めて道具を作成、そして大自然を開拓し、移動をどんどん効率化することが出来る</p>
-    <p>・オンラインでの助け合い<br>他のプレイヤーに武器や資材を提供し、ゲームの攻略を助け合うことが出来る</p>
-    <p class="pt-4">このクエストのコンセプト</p>
-    <p><%= safe_join(@quest.content.split("\n"), tag(:br)) %></p>
-  </div>
+  <%= render 'detail', quest: @quest %>
 </div>
 <div>
-  <nav class="navbar border border-light d-flex justify-content-center shadow-sm rounded-top py-0">
-    <div class="review_header row">
-      <div class="review_header_bar"></div>
-      <button class="col review_content_button d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center active_button font-weight-bold bg-transparent">
-        <div>良かった点</div>
-        <div class="icon icon-blue text-white m-2"><%= @positive_comments.length %></div>
-      </button>
-      <button class="col review_content_button d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center inactive_button font-weight-bold bg-transparent">
-        <div>改善点</div>
-        <div class="icon icon-red text-white m-2"><%= @negative_comments.length %></div>
-      </button>
-      <button class="col review_content_button d-flex flex-column-reverse flex-sm-row justify-content-center align-items-center inactive_button font-weight-bold bg-transparent">
-        <div>質問・その他</div>
-        <div class="icon icon-yellow text-white m-2"><%= @question_comments.length %></div>
-      </button>
-    </div>
-  </nav>
-  <div>
-    <div class="comment_container_container mx-auto overflow-hidden">
-      <div class="comment_container">
-        <div class="comment w-100 flex-shrink-0 overflow-auto my-3">
-          <div class="text-center border-bottom pb-4 mt-2 mb-4 comment_form">
-            <%= render 'comments/form', comment: Comment.new(quest_id: @quest.id, opinion_type: "positive") %>
-          </div>
-          <% @positive_comments.each do |comment| %>
-            <%= render 'comments/parent_comment', comment: comment %>
-          <% end %>
-        </div>
-        <div class="comment w-100 flex-shrink-0 overflow-auto my-3">
-          <div class="text-center border-bottom pb-4 mt-2 mb-4 comment_form">
-            <%= render 'comments/form', comment: Comment.new(quest_id: @quest.id, opinion_type: "negative") %>
-          </div>
-          <% @negative_comments.each do |comment| %>
-            <%= render 'comments/parent_comment', comment: comment %>
-          <% end %>
-        </div>
-        <div class="comment w-100 flex-shrink-0 overflow-auto my-3">
-          <div class="text-center border-bottom pb-4 mt-2 mb-4 comment_form">
-            <%= render 'comments/form', comment: Comment.new(quest_id: @quest.id, opinion_type: "question") %>
-          </div>
-          <% @question_comments.each do |comment| %>
-            <%= render 'comments/parent_comment', comment: comment %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render 'comments_header',
+    positive_comments_num: @positive_comments.length,
+    negative_comments_num: @negative_comments.length,
+    question_comments_num: @question_comments.length %>
+  <%= render 'comments_main',
+    positive_comments: @positive_comments,
+    negative_comments: @negative_comments,
+    question_comments: @question_comments %>
 </div>

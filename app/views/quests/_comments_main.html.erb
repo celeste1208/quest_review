@@ -1,0 +1,7 @@
+<div class="comments_visible_area">
+  <div class="comments_group">
+    <%= render 'comments_content', quest_id: @quest.id, opinion_type: "positive", comments: @positive_comments %>
+    <%= render 'comments_content', quest_id: @quest.id, opinion_type: "negative", comments: @negative_comments %>
+    <%= render 'comments_content', quest_id: @quest.id, opinion_type: "question", comments: @question_comments %>
+  </div>
+</div>

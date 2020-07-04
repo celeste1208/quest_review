@@ -1,6 +1,6 @@
 <div class="quest_form">
   <%= form_with(model: quest, local: true) do |f| %>
-    <%= render 'users/shared/error_messages', resource: quest %>
+    <%= render 'shared/validate_error_messages', resource: quest %>
     <div class="form-group">
       <%= f.label "develop_id", "Questid" %><br>
       <%= f.text_field :develop_id, placeholder: "開発ID" %>

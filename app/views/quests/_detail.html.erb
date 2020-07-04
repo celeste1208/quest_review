@@ -1,0 +1,17 @@
+<div class="container py-5">
+  <p>
+    <%= "Quest#{quest.develop_id} : #{quest.title}" %>
+    <span class="px-2"><%= link_to icon('fas', 'edit'), edit_quest_path(quest.id) %></span>
+  </p>
+  <p><%= "担当者 : #{quest.responsible}" %></p>
+  <div class="pt-4">
+    <p>ゲーム全体のコンセプト<p>
+    <p>・ルート選びの自由さ<br>オープンワールドを舞台に、プレイヤーが目的地に到達するために、自由な攻略ルートを選択することが出来る</p>
+    <p>・大自然を開拓<br>資材を集めて道具を作成、そして大自然を開拓し、移動をどんどん効率化することが出来る</p>
+    <p>・オンラインでの助け合い<br>他のプレイヤーに武器や資材を提供し、ゲームの攻略を助け合うことが出来る</p>
+  </div>
+  <div class="pt-4">
+    <p>このクエストのコンセプト</p>
+    <p><%= safe_join(quest.content.split("\n"), tag(:br)) %></p>
+  </div>
+</div>
