@@ -1,4 +1,4 @@
-<% if comment.parent.blank? %>
+<% if comment.parent_id.blank? %>
   <button class="comment_icon reply_button bg-transparent" data-replied-id=<%= comment.id %>>
     <%= icon('fas', 'comment-medical') %>
   </button>
