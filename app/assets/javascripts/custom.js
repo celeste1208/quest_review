@@ -2,68 +2,90 @@
 /*global $*/
 
 jQuery(document).on('click', '.opinion_tab', function() {
-  $('.opinion_tab').css({'color':'#949faf'});
+  $opinionTab = $('.opinion_tab');
+  $opinionSelectBar = $('.opinion_select_bar');
+  $commentsGroup = $('.comments_group');
+  $commentsSection = $('.comments_section');
+  $positiveComments = $('#positive_comments');
+  $negativeComments = $('#negative_comments');
+  $questionComments = $('#question_comments');
+
+  $opinionTab.css({'color':'#949faf'});
   $(this).css({'color':'black'});
-  $('.comments_group').children().css('visibility','hidden');
-  switch ($("div:eq(0)",this).text()) {
-    // テキストで取得するのは変更に弱すぎるのでやめる
-    case "良かった点":
-      $('.opinion_select_bar').animate({'left':'0%'}, {duration: 300});
-      $('.comments_group').css({'transform':'translate(0%,0px)'});
-      $('.comments_section:eq(0)').css('visibility','visible');
+  $commentsSection.css('visibility','hidden');
+
+  switch ($(this).attr('id')) {
+    case "positive_button":
+      $opinionSelectBar.animate({'left':'0%'}, {duration: 300});
+      $commentsGroup.css({'transform':'translate(0%,0px)'});
+      $positiveComments.css('visibility','visible');
       break;
-    case "改善点":
-      $('.opinion_select_bar').animate({'left':'33.3%'}, {duration: 300});
-      $('.comments_group').css({'transform':'translate(-100%,0px)'});
-      $('.comments_section:eq(1)').css('visibility','visible');
+    case "negative_button":
+      $opinionSelectBar.animate({'left':'33.3%'}, {duration: 300});
+      $commentsGroup.css({'transform':'translate(-100%,0px)'});
+      $negativeComments.css('visibility','visible');
       break;
-    case "質問・その他":
-      $('.opinion_select_bar').animate({'left':'66.6%'}, {duration: 300});
-      $('.comments_group').css({'transform':'translate(-200%,0px)'});
-      $('.comments_section:eq(2)').css('visibility','visible');
+    case "question_button":
+      $opinionSelectBar.animate({'left':'66.6%'}, {duration: 300});
+      $commentsGroup.css({'transform':'translate(-200%,0px)'});
+      $questionComments.css('visibility','visible');
       break;
   }
 });
 
-//全部comment-idで統一できるならする。div[comment-id]で検索してるので、問題ないかチェック。
-//更新時の処理とかもcomment-idでセレクタ検索してる
 jQuery(document).on('click', '.comment_edit_button', function() {
-  var comment_id = $(this).data('edit-comment-id');
-  $('div[data-comment-id=' + comment_id + '] .comment_edit_form').show();
-  $('p[data-comment-id=' + comment_id + ']').hide();
+  var commentId = $(this).data('edit-comment-id');
+  $editForm = $('div[data-comment-id=' + commentId + '] .comment_edit_form');
+  $comment = $('p[data-comment-id=' + commentId + ']');
+
+  $editForm.show();
+  $comment.hide();
 });
 
 jQuery(document).on('click', '.comment_edit_cancel', function() {
-  var comment_id = $(this).data('edit-comment-cancel-id');
-  $('div[data-comment-id=' + comment_id + '] .comment_edit_form').hide();
-  $('p[data-comment-id=' + comment_id + ']').show();
-  var comment_content = $('p[data-comment-id=' + comment_id + ']').html();
-  comment_content = comment_content.replace(/<br>/g, "\n");
-  $('div[data-comment-id=' + comment_id + '] .comment_edit_form textarea').val(comment_content);
+  var commentId = $(this).data('edit-comment-cancel-id');
+  var commentContent = $('p[data-comment-id=' + commentId + ']').html();
+  commentContent = commentContent.replace(/<br>/g, "\n");
+  $editForm = $('div[data-comment-id=' + commentId + '] .comment_edit_form');
+  $editFormText = $('div[data-comment-id=' + commentId + '] .comment_edit_form textarea');
+  $comment = $('p[data-comment-id=' + commentId + ']');
+
+  $editFormText.val(commentContent);
+  $editForm.hide();
+  $comment.show();
 });
 
 jQuery(document).on('click', '.reply_button', function() {
-  var comment_id = $(this).data('replied-id');
-  $('div[data-comment-id=' + comment_id + '] .reply_form').show();
+  var commentId = $(this).data('replied-id');
+  $replyForm = $('div[data-comment-id=' + commentId + '] .reply_form');
+
+  $replyForm.show();
 });
 
 jQuery(document).on('click', '.reply_cancel', function() {
-    var comment_id = $(this).data('reply-canceled-id');
-    $('div[data-comment-id=' + comment_id + '] .reply_form').hide();
-    $('div[data-comment-id=' + comment_id + '] .reply_form textarea').val("");
+  var commentId = $(this).data('reply-canceled-id');
+  $replyForm = $('div[data-comment-id=' + commentId + '] .reply_form');
+  $replyFormText = $('div[data-comment-id=' + commentId + '] .reply_form textarea');
+
+  $replyForm.hide();
+  $replyFormText.val("");
 });
 
 jQuery(document).on('turbolinks:load', function() {
+  $imgPrev = $('.img_prev');
+  $imgFile = $('.img_file');
+
   function readURL(input) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
       reader.onload = function (e) {
-       $('.img_prev').attr('src', e.target.result);
+       $imgPrev.attr('src', e.target.result);
      }
      reader.readAsDataURL(input.files[0]);
     }
   }
-  $('.img_file').change(function() {
+
+  $imgFile.change(function() {
     readURL(this);
   }); 
 });
