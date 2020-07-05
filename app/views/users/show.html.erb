@@ -1,4 +1,4 @@
-<div class="page_head p-4">
+<div class="page_head">
   <p>プロフィール</p>
   <div class="d-flex mb-4 profile">
     <img src="<%= @user.image_url %>" class="rounded-circle mx-2", width="64", height="64">
@@ -7,7 +7,7 @@
         <%= @user.user_name %>
       </div>
       <div>
-        <button class="comment_icon bg-transparent" data-toggle="modal" data-target="#profile_modal">
+        <button class="comment_icon bg-transparent" data-toggle="modal" data-target="#profile_img_modal">
           <%= icon('fas', 'camera') %>
           <span>画像を変更</span>
         </button>
@@ -17,11 +17,11 @@
   <p><%= link_to "登録情報の変更", edit_user_registration_path %></p>
   <p><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></p>
 </div>
-<div class="modal fade" id="profile_modal" tabindex="-1" role="dialog" aria-labelledby="profile_modal_label" aria-hidden="true">
+<div class="modal fade" id="profile_img_modal" tabindex="-1" role="dialog" aria-labelledby="profile_img_modal_label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="profile_modal_label">プロフィール画像変更</h5>
+        <h5 class="modal-title" id="profile_img_modal_label">プロフィール画像変更</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

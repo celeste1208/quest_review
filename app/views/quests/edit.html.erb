@@ -1,4 +1,4 @@
-<div class="page_head p-4">
+<div class="page_head">
   <%= render 'form', quest: @quest %>
   <div class="my-4">
     <%= link_to quest_path(@quest.id), method: :delete, data: { confirm: '削除しますか？' } do %>
