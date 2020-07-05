@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Top', type: :feature do
+RSpec.feature 'Home', type: :feature do
   let(:user) { create(:user) }
 
   describe 'ヘッダーのリンクをテスト' do
