@@ -29,7 +29,6 @@
       <div class="modal-body">
         <img src="<%= @user.image_url %>" class="rounded-circle mb-3 img_prev", width="64", height="64">
         <%= form_with model: @user, remote: true do |f| %>
-          <%= render "users/shared/error_messages", resource: @user %>
           <div class="form-group">
             <%= f.file_field :image, class: "d-block img_file", accept: "image/*" %>
           </div>
