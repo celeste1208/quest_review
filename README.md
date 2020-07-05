@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+このアプリケーションについて
 
-Things you may want to cover:
+開発中のゲームソフトについて、社内フィードバックを行うためのアプリケーションになります。
+ゲーム開発に携わる中で、ゲームの面白さのクオリティを上げるためのPDCAサイクルの頻度が少ないことを課題に感じ、それを解決するためにこのアプリケーションを作成しました。
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
